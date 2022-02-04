@@ -1,8 +1,3 @@
-import sys
-import os
-# Tell syspath where to import modules from other folders in root direcotry
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from env import EnvReader
 from scraper import ProductScraper
         
 class Command:

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import os
 # Tell syspath where to import modules from other folders in root direcotry
