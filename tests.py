@@ -3,6 +3,8 @@ import os
 import unittest
 import json
 from scraper import ProductScraper
+from selenium.common.exceptions import TimeoutException
+from command import Command
 
 class ProductScraperTest(unittest.TestCase):
     """ Unit tests """
@@ -53,6 +55,27 @@ class ProductScraperTest(unittest.TestCase):
         self.assertEqual(response_dict.get('3').get('Option title'), 'Option 480 Mins')
         self.assertEqual(response_dict.get('4').get('Option title'), 'Option 2000 Mins')
         self.assertEqual(response_dict.get('5').get('Option title'), 'Option 3600 Mins')
+
+    def testCommand(self):
+        """ Test for command execution
+            Script return success, result count is 6
+        """
+        command = Command()
+        result = command.runCommand()
+        # Transform string response to proper json and next to dictionary
+        json_string = result.replace("'", "\"")
+        response_dict = json.loads(json_string)
+        self.assertEqual(len(response_dict.keys()), 6)
+
+    def testPageScrapeException(self):
+        """ Test for scraper response
+            Script throw exception
+        """
+        tests_file = 'testsPayload/EmptyHtml.html'
+        full_path = os.path.abspath(tests_file)
+        os.environ['PRODUCT_PAGE_URL'] = 'file:///' + full_path
+        product = ProductScraper()
+        self.assertRaises(TimeoutException, product.getContent())
 
     @classmethod
     def tearDownClass(self):

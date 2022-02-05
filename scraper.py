@@ -10,7 +10,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import TimeoutException
 import time
 import random
 import json 
@@ -40,34 +40,26 @@ class ProductScraper(BaseScraper):
         time.sleep(random.randrange(2, 4))
         try:
             WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, EnvReader.getProductsByClass(self))))
-        except NoSuchElementException:
-            pass
+        except TimeoutException:
+            raise TimeoutException('Element not found')
 
         # Create dictionary to keep response with key => val
         response = {}
         # Get products
-        try:
-            products =  driver.find_elements_by_class_name(EnvReader.getProductsByClass(self))
+        products =  driver.find_elements_by_class_name(EnvReader.getProductsByClass(self))
 
-            for i, product in enumerate(products):
-                title = ProductScraper.characterEncoder(product.find_element_by_tag_name(EnvReader.getTitle(self)).text)
-                description = ProductScraper.characterEncoder(product.find_element_by_class_name(EnvReader.getDescription(self)).text)
-
-                # Get discount
-                discount = ''
-                try:
-                    discount = product.find_element_by_css_selector(EnvReader.getDiscount(self)).text
-                except:
-                    pass
-
-                price = ProductScraper.characterEncoder(product.find_element_by_class_name(EnvReader.getPrice(self)).text)
-
-                # Add elements to response dict
-                response[i] = ProductScraper.cleanResponse(title, description, discount, price)
-
-        except NoSuchElementException:
-            driver.close()
-            raise Exception('Element not found')
+        for i, product in enumerate(products):
+            title = ProductScraper.characterEncoder(product.find_element_by_tag_name(EnvReader.getTitle(self)).text)
+            description = ProductScraper.characterEncoder(product.find_element_by_class_name(EnvReader.getDescription(self)).text)
+            # Get discount - in try / catch since not present on every product
+            discount = ''
+            try:
+                discount = product.find_element_by_css_selector(EnvReader.getDiscount(self)).text
+            except:
+                pass
+            price = ProductScraper.characterEncoder(product.find_element_by_class_name(EnvReader.getPrice(self)).text)
+            # Add elements to response dict
+            response[i] = ProductScraper.cleanResponse(title, description, discount, price)
 
         driver.close()
 
