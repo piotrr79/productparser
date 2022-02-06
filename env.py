@@ -103,17 +103,3 @@ class EnvReader():
             self.value = config('PRODUCT_DISCOUNT')
         
         return self.value
-
-
-    def __processEnvParam(self, param: str) -> str:
-        """ Get product discount
-
-            Returns:
-                Discount string
-        """
-        if os.environ.get(param) is not None:   
-            self.value = os.environ['param']
-        else:
-            self.value = config('param')
-        
-        return self.value

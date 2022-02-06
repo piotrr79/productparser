@@ -17,7 +17,7 @@ List of products with details will be returned
 From new terminal window execute tests with `python3 -m unittest tests.ProductScraperTest`  
 
 ## Tests Code Coverage:
-From new terminal window execute tests with `coverage run --source=. tests.py `  
+From new terminal window execute tests with `coverage run --source=. tests.py`  
 Generate html report with: `coverage html`  
 Erase current coverage: `coverage erase`  
 
