@@ -1,0 +1,25 @@
+from selenium import webdriver
+from env import EnvReader
+
+class Driver:
+    """ Driver """
+
+    def __init__(self):
+        self
+
+
+    def getDriver(self):
+        """ Get driver
+            Returns:
+                Selenium WebDriver
+        """
+        driver_type = EnvReader.getDriverDefinition(self)
+
+        if driver_type =='Firefox':
+            driver = webdriver.Firefox()
+        elif driver_type == 'Chrome':
+            driver = webdriver.Chrome()
+        else:
+            raise BaseException('Driver not defined')
+
+        return driver

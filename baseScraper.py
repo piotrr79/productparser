@@ -1,9 +1,12 @@
+from tokenize import String
+from typing import List
+
+
 class BaseScraper:
     """ BaseScraper """
     
     def __init__(self):
         self
-
 
     def characterEncoder(string):
         """ Transform uft character
@@ -18,7 +21,7 @@ class BaseScraper:
         return string.encode('utf-8','ignore').decode("utf-8")
 
 
-    def clearResponse(title, description, discount, price):
+    def clearResponse(title: String, description: String, discount: String, price: String) -> List:
         """ Clean response from duplicates prepare dictionary for json
 
             Args:

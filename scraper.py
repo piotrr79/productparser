@@ -5,8 +5,8 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from env import EnvReader
 from baseScraper import BaseScraper
+from driver import Driver
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -16,7 +16,7 @@ import random
 import json 
 
 
-class ProductScraper(BaseScraper):
+class ProductScraper(BaseScraper, Driver):
     """ ProductScraper """
     
     def __init__(self):
@@ -33,7 +33,7 @@ class ProductScraper(BaseScraper):
                 Json
 
         """
-        driver = webdriver.Firefox()
+        driver = Driver.getDriver(self)
         driver.get(EnvReader.getProductPageUrl(self))
 
         # Wait for page to be loaded

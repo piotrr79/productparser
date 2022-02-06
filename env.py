@@ -10,6 +10,19 @@ class EnvReader():
     def __init__(self):
         self
 
+    def getDriverDefinition(self):
+        """ Get driver definition 
+
+            Returns:
+                Driver string
+        """
+        if os.environ.get('DRIVER') is not None:   
+            self.value = os.environ['DRIVER']
+        else:
+            self.value = config('DRIVER')
+        
+        return self.value
+
     def getProductPageUrl(self):
         """ Get product page url from env 
 
@@ -88,5 +101,19 @@ class EnvReader():
             self.value = os.environ['PRODUCT_DISCOUNT']
         else:
             self.value = config('PRODUCT_DISCOUNT')
+        
+        return self.value
+
+
+    def __processEnvParam(self, param):
+        """ Get product discount
+
+            Returns:
+                Discount string
+        """
+        if os.environ.get(param) is not None:   
+            self.value = os.environ['param']
+        else:
+            self.value = config('param')
         
         return self.value
