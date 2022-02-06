@@ -1,5 +1,5 @@
 # Parser:
-Python parser to scrap product info from pages
+Python parser to scrape product info from pages
 
 ## Installation:
 Install Python3  
@@ -27,4 +27,4 @@ Activate env with: `source env/bin/activate` an d run all of above commands from
 
 ## Sample site avaiability
 In case of problems with attached sample site avaiablity use wget donwloded version of the site used in tests
-In PRODUCT_PAGE_URL provide link to wget wersion in format: file:////absolute_path_to_repositiry/testsPayload/EmptyHtml.html
+In `PRODUCT_PAGE_URL` provide link to wget wersion in format: `file:////absolute_path_to_repositiry/testsPayload/EmptyHtml.html`
