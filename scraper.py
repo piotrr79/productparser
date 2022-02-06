@@ -59,7 +59,7 @@ class ProductScraper(BaseScraper):
                 pass
             price = ProductScraper.characterEncoder(product.find_element_by_class_name(EnvReader.getPrice(self)).text)
             # Add elements to response dict
-            response[i] = ProductScraper.cleanResponse(title, description, discount, price)
+            response[i] = ProductScraper.clearResponse(title, description, discount, price)
 
         driver.close()
 

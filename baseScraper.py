@@ -18,7 +18,7 @@ class BaseScraper:
         return string.encode('utf-8','ignore').decode("utf-8")
 
 
-    def cleanResponse(title, description, discount, price):
+    def clearResponse(title, description, discount, price):
         """ Clean response from duplicates prepare dictionary for json
 
             Args:
