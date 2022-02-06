@@ -28,3 +28,6 @@ Activate env with: `source env/bin/activate` an d run all of above commands from
 ## Sample site avaiability
 In case of problems with attached sample site avaiablity use wget donwloded version of the site used in tests
 In `PRODUCT_PAGE_URL` provide link to wget wersion in format: `file:////absolute_path_to_repositiry/testsPayload/EmptyHtml.html`
+
+## Running script with Chrome webdrived:
+Install Chrome and Chromedriver and switch Driver in .env file to Chrome
