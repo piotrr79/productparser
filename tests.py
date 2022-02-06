@@ -18,7 +18,7 @@ class ProductScraperTest(unittest.TestCase):
 
     def testPageScrapeCountResults(self):
         """ Test for scraper response
-            Script return success, result count is 6
+            Script returns success, result count is 6
         """
         product = ProductScraper()
         result = product.getContent()
@@ -29,7 +29,7 @@ class ProductScraperTest(unittest.TestCase):
 
     def testPageScrapeCountResultsError(self):
         """ Test for scraper response
-            Script return success, result count is not 4
+            Script returns success, result count is not 4
         """
         product = ProductScraper()
         result = product.getContent()
@@ -40,7 +40,7 @@ class ProductScraperTest(unittest.TestCase):
 
     def testPageScrapeCompareResults(self):
         """ Test for scraper response
-            Script return success, response is like asserts
+            Script returns success, response is like asserts
         """
         product = ProductScraper()
         result = product.getContent()
@@ -58,7 +58,7 @@ class ProductScraperTest(unittest.TestCase):
 
     def testCommand(self):
         """ Test for command execution
-            Script return success, result count is 6
+            Script returns success, result count is 6
         """
         command = Command()
         result = command.runCommand()
@@ -69,13 +69,14 @@ class ProductScraperTest(unittest.TestCase):
 
     def testPageScrapeException(self):
         """ Test for scraper response
-            Script throw exception
+            Script throws exception
         """
         tests_file = 'testsPayload/EmptyHtml.html'
         full_path = os.path.abspath(tests_file)
         os.environ['PRODUCT_PAGE_URL'] = 'file:///' + full_path
         product = ProductScraper()
-        self.assertRaises(TimeoutException, product.getContent())
+        with self.assertRaises(TimeoutException):
+         product.getContent()
 
     @classmethod
     def tearDownClass(self):
