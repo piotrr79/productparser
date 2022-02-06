@@ -1,14 +1,10 @@
-from tokenize import String
-from typing import List
-
-
 class BaseScraper:
     """ BaseScraper """
     
     def __init__(self):
         self
 
-    def characterEncoder(string):
+    def characterEncoder(string: str) -> str:
         """ Transform uft character
 
             Args:
@@ -21,7 +17,7 @@ class BaseScraper:
         return string.encode('utf-8','ignore').decode("utf-8")
 
 
-    def clearResponse(title: String, description: String, discount: String, price: String) -> List:
+    def clearResponse(title: bool, description: str, discount: str, price: str) -> list:
         """ Clean response from duplicates prepare dictionary for json
 
             Args:
@@ -34,7 +30,6 @@ class BaseScraper:
                 dictionary
 
         """
-
         list = [title, description, discount, price]
 
         return {'Option title': BaseScraper.__removeDupes(list, title), 
@@ -43,7 +38,7 @@ class BaseScraper:
                 'Discount:': BaseScraper.__removeDupes(list, discount)}
 
 
-    def __removeDupes(list, item):
+    def __removeDupes(list: list, item: str) -> str:
         """ Remove duplicated occurences of subsrtring in string
 
             Args:
@@ -63,4 +58,3 @@ class BaseScraper:
                 item = item.replace(str(element), '')
         
         return item
-

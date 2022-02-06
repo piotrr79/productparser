@@ -105,7 +105,7 @@ class EnvReader():
         return self.value
 
 
-    def __processEnvParam(self, param):
+    def __processEnvParam(self, param: str) -> str:
         """ Get product discount
 
             Returns:

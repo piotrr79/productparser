@@ -8,7 +8,7 @@ class Driver:
         self
 
 
-    def getDriver(self):
+    def getDriver(self) -> webdriver:
         """ Get driver
             Returns:
                 Selenium WebDriver

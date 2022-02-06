@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import os
+from tokenize import String
 # Tell syspath where to import modules from other folders in root direcotry
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from env import EnvReader
@@ -23,7 +24,7 @@ class ProductScraper(BaseScraper, Driver):
         self
 
 
-    def getContent(self):
+    def getContent(self) -> str:
         """ Get products list with details
 
             Args:
