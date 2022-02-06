@@ -24,3 +24,7 @@ Erase current coverage: `coverage erase`
 ## Run in env
 To create env run: `python3 -m venv env`
 Activate env with: `source env/bin/activate` an d run all of above commands from env
+
+## Sample site avaiability
+In case of problems with attached sample site avaiablity use wget donwloded version of the site used in tests
+In PRODUCT_PAGE_URL provide link to wget wersion in format: file:////absolute_path_to_repositiry/testsPayload/EmptyHtml.html

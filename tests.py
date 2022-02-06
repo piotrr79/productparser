@@ -12,7 +12,7 @@ class ProductScraperTest(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         """ Set test env variables """
-        tests_file = 'testsPayload/VidexHomePageEnglish.html'
+        tests_file = 'testsPayload/videx.comesconnected.com/index.html'
         full_path = os.path.abspath(tests_file)
         os.environ['PRODUCT_PAGE_URL'] = 'file:///' + full_path
 
@@ -71,7 +71,7 @@ class ProductScraperTest(unittest.TestCase):
         """ Test for scraper response
             Script throws exception
         """
-        tests_file = 'testsPayload/EmptyHtml.html'
+        tests_file = 'testsPayload/videx.comesconnected.com/emptyindex.html'
         full_path = os.path.abspath(tests_file)
         os.environ['PRODUCT_PAGE_URL'] = 'file:///' + full_path
         product = ProductScraper()
