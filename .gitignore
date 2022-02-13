@@ -7,5 +7,5 @@ __pytest_cache__/
 *.py[cod]
 .DS_Store
 **/.DS_Store
-geckodriver.log
+*.log
 env

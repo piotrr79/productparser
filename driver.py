@@ -19,6 +19,8 @@ class Driver:
             driver = webdriver.Firefox()
         elif driver_type == 'Chrome':
             driver = webdriver.Chrome()
+        elif driver_type == 'PhantomJS':
+            driver = webdriver.PhantomJS()
         else:
             raise BaseException('Driver not defined')
 
